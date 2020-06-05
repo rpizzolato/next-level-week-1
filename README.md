@@ -56,7 +56,44 @@ utilizamos o seguinte código CSS:
 	color: red;
 }
 ```
-assim teremos apenas `Element 2` com o `color` igual a `red`.
+assim teremos apenas `Element 2` com o `color` igual a `red`;
+- caso tenha alguns itens dentro do <li> que queira que apenas o <li> ouça o evento de click (e não seus respectivos filhos), usamos a propriedade pointer-events: none. Por exemplo, vamos supor que temos a seguinte estrutura:
+```html
+<div class="items-grid">
+	<li data-id="1" class="selected">
+		<img src="./assets/lampadas.svg" alt="">
+		<span>Lâmpadas</span>
+	</li>
+</div>
+```
+para que tanto <img> e <span> não sejam reconhecidos em um Event Listener, devemos remover o evento de click neles, por meio do css:
+```css
+.items-grid li img,
+.items-grid li span {
+	pointer-events: none;
+}
+```
+- para identificar algum item específico que queira, em vez de usarmos o id, para posteriormente recuperarmos essa informação, podemos usar a propridade data no HTML, lembrando que após o hífen, podemos usar qualquer anotação que quisermos, no geral, que faça sentido na aplicação:
+```html
+	<li data-id="1" class="selected">
+```
+para recuperarmos o data-id via javascript, utilizamos:
+```js
+	const itemsToCollect = document
+		.querySelectorAll("li")
+		.addEventListener("click", handleSomething);
+
+	function handleSomething(event) {
+		console.log(event.target.dataset.id); // retorna 1
+	}
+```
+- caso precise adicionar ou remover alguma classe em algum elemento, temos que pegar o event.target do elemento e usar toggle(), logo após a propriedade classList, que indica que iremos adicionar ou remover uma nova class:
+```js
+event.target.classList.toggle("selected");
+```
+há támbém a possibilidade de usar add() ou remove();
+- caso precise colocar alpha em cores hexadecimais, basta acrescentar um valor nos últimos dois caracteres, por exemplo: #000000EF;
+- como alternativa para leitores de tela, podemos utilizar uma imagem dentro de um link com algo escrito, no entanto com font-size de 0.01px, ficará praticamente invisível para os olhos, no entanto acessível aos leitores de tela;
 
 #### Console do navegador
 - caso queira selecionar um elemento, acesse o console do navegador e use:
@@ -73,6 +110,4 @@ document.querySelector("select[name=uf") // pega um <select> com name igual a uf
 ```js
 document.querySelector("select[name=uf").addEventListener("change",() => {})
 
-#### completando Cidade e Estado com o <Select>
-- obter a API do site [IBGE](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1);
-- usar a API `https://servicodados.ibge.gov.br/api/v1/localidades/distritos`
+

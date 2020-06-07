@@ -93,7 +93,7 @@ event.target.classList.toggle("selected");
 ```
 há támbém a possibilidade de usar add() ou remove();
 - caso precise colocar alpha em cores hexadecimais, basta acrescentar um valor nos últimos dois caracteres, por exemplo: #000000EF;
-- como alternativa para leitores de tela, podemos utilizar uma imagem dentro de um link com algo escrito, no entanto com font-size de 0.01px, ficará praticamente invisível para os olhos, no entanto acessível aos leitores de tela;
+- como alternativa para leitores de tela, podemos utilizar uma imagem dentro de um link com algo escrito, no entanto com font-size de 0.01px, ficará praticamente invisível para os olhos, no entanto acessível aos leitores de tela.
 
 #### Console do navegador
 - caso queira selecionar um elemento, acesse o console do navegador e use:
@@ -109,5 +109,8 @@ document.querySelector("select[name=uf") // pega um <select> com name igual a uf
 - além de selecionar, é possível adicionar um Event Listener usando `addEventListener()`:
 ```js
 document.querySelector("select[name=uf").addEventListener("change",() => {})
+```
 
+#### preperando o terreno para o back-end
+- 
 

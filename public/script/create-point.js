@@ -15,7 +15,7 @@ populateUfs();
 
 function getCities(event) {
 	const citySelect = document.querySelector("select[name=city]");
-	const stateHidden = document.querySelector("select[name=city]");
+	const stateHidden = document.querySelector("input[name=state]");
 	const valueState = event.target.value;
 
 	const indexOfSelectedState = event.target.selectedIndex;
